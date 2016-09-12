@@ -9,12 +9,12 @@ var errorHandler = require('errorHandler');
 var config = require('./config/env')
 
 mongoose.connect(config.mongo.uri,config.mongo.options);
-// var modelsPath = path.join(_dirname,'model');
-// fs.readdirSync(modelsPath).forEach(function(file){
-//     if(/(.*)\.js$/.test(file)){
-//         require(modelsPath+'/'+file);
-//     }
-// })
+var modelsPath = path.join(_dirname,'model');
+fs.readdirSync(modelsPath).forEach(function(file){
+    if(/(.*)\.js$/.test(file)){
+        require(modelsPath+'/'+file);
+    }
+})
 
 // if(config.seedDB){
 //     require('./config/seed');
