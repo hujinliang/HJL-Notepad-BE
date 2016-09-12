@@ -1,0 +1,29 @@
+var path = require('path');
+var _ = require('lodash');
+var fs = require('fs');
+
+var all = {
+    env:process.env.NODE_ENV,
+    port:process.env.PORT || 9000,
+    mongo:{
+        options:{
+            db:{
+                safe:true
+            }
+        }
+    },
+    session:{
+        secrets:'hjl-zq'
+    },
+    seedDB:true,
+    snsLogins:['qq'],
+    qq:{
+        clientID:"101331657",
+        clientSecret:"f3fb9d389710d8cf3fccc498721dc0fe",
+        callbackURL:"/auth/qq/callback"
+    }
+};
+
+var config = _.merge(all,require('./'+process.env.NODE_ENV+'.js')||{});
+
+module.exports = config;
