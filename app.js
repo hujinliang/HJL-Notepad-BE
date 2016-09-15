@@ -16,18 +16,22 @@ fs.readdirSync(modelsPath).forEach(function(file){
     }
 })
 
-// if(config.seedDB){
-//     require('./config/seed');
-// }
+if(config.seedDB){
+    require('./config/seed');
+}
 
 var app = express();
 require('./config/express')(app);
 
 require('./routes')(app);
 
-app.get('*',function(req,res){
-    res.send('hello world')
-})
+// app.get('/*',function(req,res){
+//     res.send('hello world')
+// })
+
+// app.get('/hello',function(req,res){
+//     res.status(404).send('hello')
+// })
 
 app.use(function(err,req,res,next){
     return res.status(500).send('error')

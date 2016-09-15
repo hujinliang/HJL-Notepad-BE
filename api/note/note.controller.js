@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Note = mongoose.model('Note');
 var config = require('../../config/env');
+var path = require('path');
 var AVATAR_UPLOAD_FOLDER = path.join(__dirname,'../../public/upload/')
 
 exports.getNoteList = function(req,res,next){
@@ -16,7 +17,7 @@ exports.getNoteList = function(req,res,next){
 
 exports.getNoteCount = function(req,res,next){
     var uid = req.user._id;
-    Note.countAsync({uid:uid}).then(function(result){
+    Note.countAsync({uid:uid}).then(function(count){
         return res.status(200).json({
             count:count
         })
@@ -50,8 +51,14 @@ exports.upload = function(req,res){
 }
 
 exports.addNote = function(req,res,next){
+    
+   
+    
     var content = req.body.content;
     var uid = req.user._id;
+    
+    
+    
     var callTime = req.body.callTime;
     var error_msg;
     if(!content && !req.body.images.length){

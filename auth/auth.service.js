@@ -24,12 +24,18 @@ function isAuthenticated(){
     return compose()
         .use(authToken(true))
         .use(function(err,req,res,next){
+            
+            console.log(err)
+            
             if(err.name === 'UnauthorizedError'){
-                return res.status(401).send();
+                return res.status(401).send('error');
             }
             next();
         })
         .use(function(req,res,next){
+            
+            console.log('success')
+            
             User.findById(req.user._id,function(err,user){
                 if(err) return res.status(500).send();
                 if(!user){
