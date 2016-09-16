@@ -100,3 +100,11 @@ exports.updateNote = function(req,res,next){
             res.status(500).send(err)
         })
 }
+
+expots.deleteNote = function(req,res,next){
+    var nid = req.parmas.id;
+    return Note.findByIdAndRemoveAsync(nid)
+        .then(function(note){
+            return res.status(200).send('删除成功')
+        })
+}

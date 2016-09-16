@@ -10,5 +10,6 @@ router.get('/getNoteCount',auth.isAuthenticated(),controller.getNoteCount);
 router.post('/upload',auth.isAuthenticated(),controller.upload);
 router.put('/:id/updateNote',auth.isAuthenticated(),controller.updateNote);
 router.get('/:id/getNoteDetail',auth.isAuthenticated(),controller.getNoteDetail);
+router.delete('/:id/deleteNote',auth.isAuthenticated(),controller.deleteNote)
 
 module.exports = router;
