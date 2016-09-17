@@ -24,7 +24,7 @@ router.post('/',function(req,res,next){
             return res.status(402).send(info);
         }
 
-        var token = auth.signToken(user_id);
+        var token = auth.signToken(user._id);
         return res.json({token:token});
     })(req,res,next)
 })

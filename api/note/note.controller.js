@@ -101,7 +101,7 @@ exports.updateNote = function(req,res,next){
         })
 }
 
-expots.deleteNote = function(req,res,next){
+exports.deleteNote = function(req,res,next){
     var nid = req.parmas.id;
     return Note.findByIdAndRemoveAsync(nid)
         .then(function(note){
