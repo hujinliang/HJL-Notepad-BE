@@ -3,6 +3,7 @@ var User = mongoose.model('User');
 var Note = mongoose.model('Note');
 var config = require('../../config/env');
 var path = require('path');
+var fs = require('fs')
 var AVATAR_UPLOAD_FOLDER = path.join(__dirname,'../../public/upload/')
 
 exports.getNoteList = function(req,res,next){
@@ -36,6 +37,10 @@ exports.getNoteDetail = function(req,res,next){
 }
 
 exports.upload = function(req,res){
+
+
+    
+
     var filename = req.files.files.originalFilename ||  path.basename(req.files.files.ws.path);
 
 //copy file to a public directory
