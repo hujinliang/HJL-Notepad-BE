@@ -18,7 +18,8 @@ var NoteSchema = new Schema({
     },
     images:{
         type:Array
-    }
+    },
+    color:String
 })
 
 var Note = mongoose.model('Note',NoteSchema);

@@ -51,22 +51,25 @@ exports.upload = function(req,res){
     //copy file
     fs.createReadStream(req.files.files.path).pipe(fs.createWriteStream(targetPath));
     //return file url
-    res.json({code: 200, msg: {url: 'http://' + req.headers.host + '/upload' + filename}});
+    res.json({code: 200, msg: {url: 'http://' + req.headers.host + '/upload/' + filename}});
 
 }
 
 exports.addNote = function(req,res,next){
-    
+
+    console.log(req.body)
    
     
     var content = req.body.content;
     var uid = req.user._id;
     
+
+    
     
     
     var callTime = req.body.callTime;
     var error_msg;
-    if(!content && !req.body.images.length){
+    if(!content){
         error_msg = '内容不能为空'
     }
     if(error_msg){
@@ -84,27 +87,37 @@ exports.addNote = function(req,res,next){
 }
 
 exports.updateNote = function(req,res,next){
+
+    console.log(req.body)
+
     var id = req.params.id;
     return Note.findByIdAsync(id)
         .then(function(note){
-            var note = note;
             if(req.body.content){
-                note.content = content
+
+                note.content = req.body.content
+                
+            }
+            if(req.body.color){
+                note.color = req.body.color
             }
             if(req.body.images){
-                note.images = images;
+                
             }
             if(req.body.callTime){
                 note.callTime = req.body.callTime;
             }
-            note.saveAsync().then(function(result){
+            
+
+            return note.saveAsync().then(function(result){
                 return res.status(200).json({
                     success:true,
                     data:result
                 })
             })
         }).catch(function(err){
-            res.status(500).send(err)
+            // next(err)
+            res.status(500).send('发生错误')
         })
 }
 
