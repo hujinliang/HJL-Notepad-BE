@@ -77,6 +77,8 @@ exports.addNote = function(req,res,next){
     return Note.createAsync(req.body)
         .then(function(result){
             return res.status(200).json({data:result})
+        }).catch(function(error){
+            console.log(error)
         })
 
 }
@@ -107,7 +109,7 @@ exports.updateNote = function(req,res,next){
 }
 
 exports.deleteNote = function(req,res,next){
-    var nid = req.parmas.id;
+    var nid = req.params.id;
     return Note.findByIdAndRemoveAsync(nid)
         .then(function(note){
             return res.status(200).send('删除成功')
