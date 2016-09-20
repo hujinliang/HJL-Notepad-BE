@@ -14,7 +14,7 @@ var NoteSchema = new Schema({
         default:Date.now
     },
     calltime:{
-        type:Date
+        type:String
     },
     images:{
         type:Array

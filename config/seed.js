@@ -25,20 +25,20 @@ if(process.env.NODE_ENV === 'development'){
                 return Note.createAsync({
                     uid:user._id,
                     content:'吃饭',
-                    calltime:Date.now()
+                    // calltime:Date.now()
                     
                 },{
                     uid:user._id,
                     content:'学习',
-                    calltime:Date.now()
+                    // calltime:Date.now()
                 },{
                     uid:user._id,
                     content:'睡觉',
-                    calltime:Date.now()
+                    // calltime:Date.now()
                 },{
                     uid:user._id,
                     content:'看书',
-                    calltime:Date.now()
+                    // calltime:Date.now()
                 })
             })
         }

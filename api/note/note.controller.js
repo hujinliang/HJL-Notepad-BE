@@ -61,13 +61,7 @@ exports.addNote = function(req,res,next){
    
     
     var content = req.body.content;
-    var uid = req.user._id;
     
-
-    
-    
-    
-    var callTime = req.body.callTime;
     var error_msg;
     if(!content){
         error_msg = '内容不能为空'
@@ -104,8 +98,8 @@ exports.updateNote = function(req,res,next){
             if(req.body.images){
                 
             }
-            if(req.body.callTime){
-                note.callTime = req.body.callTime;
+            if(req.body.calltime){
+                note.calltime = req.body.calltime;
             }
             
 
