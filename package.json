@@ -4,7 +4,7 @@
   "description": "a web notepad service",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=production&& node app",
+    "start": "set NODE_ENV=production&& pm2 start app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

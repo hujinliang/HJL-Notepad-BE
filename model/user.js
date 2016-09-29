@@ -18,6 +18,7 @@ var UserSchema = new Schema({
         email:String,
         name:String
     },
+    avatar:String,
     hashedPassword:String,
     salt:String,
     created:{
